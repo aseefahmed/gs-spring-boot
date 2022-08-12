@@ -30,6 +30,11 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'tree .'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
